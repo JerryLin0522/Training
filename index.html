@@ -1,32 +1,48 @@
-<!DOCTYPE html>
+
+                        <!DOCTYPE html>
+                        <html lang="en">
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+							<style>
+								body {
+									background-color: white; /* Ensure the iframe has a white background */
+								}
+
+								
+							</style>
+                        </head>
+                        <body>
+                            <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>良率分析部門訓練專案規劃</title>
+  <title>良率分析部門新進工程師訓練專案</title>
   <style>
-    /* ── Reset & Base ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --blue:    #1e6fd9;
-      --blue-lt: #dbeafe;
-      --teal:    #0d9488;
-      --teal-lt: #ccfbf1;
-      --purple:  #7c3aed;
-      --purple-lt:#ede9fe;
-      --orange:  #ea580c;
-      --orange-lt:#ffedd5;
-      --green:   #16a34a;
-      --green-lt:#dcfce7;
-      --red:     #dc2626;
-      --red-lt:  #fee2e2;
-      --gray:    #6b7280;
-      --gray-lt: #f3f4f6;
-      --dark:    #111827;
-      --white:   #ffffff;
-      --shadow:  0 4px 24px rgba(0,0,0,.08);
-      --radius:  14px;
+      --blue:      #1e6fd9;
+      --blue-lt:   #dbeafe;
+      --teal:      #0d9488;
+      --teal-lt:   #ccfbf1;
+      --purple:    #7c3aed;
+      --purple-lt: #ede9fe;
+      --orange:    #ea580c;
+      --orange-lt: #ffedd5;
+      --green:     #16a34a;
+      --green-lt:  #dcfce7;
+      --red:       #dc2626;
+      --red-lt:    #fee2e2;
+      --micron:    #0061d5;   /* Micron brand blue */
+      --micron-lt: #e0edff;
+      --gray:      #6b7280;
+      --gray-lt:   #f3f4f6;
+      --dark:      #111827;
+      --white:     #ffffff;
+      --shadow:    0 4px 24px rgba(0,0,0,.08);
+      --radius:    14px;
     }
 
     body {
@@ -36,19 +52,18 @@
       line-height: 1.7;
     }
 
-    /* ── Hero Header ── */
+    /* ══ HERO ══ */
     .hero {
-      background: linear-gradient(135deg, #1e40af 0%, #0d9488 60%, #7c3aed 100%);
+      background: linear-gradient(135deg, #1e40af 0%, #0d9488 55%, #7c3aed 100%);
       color: #fff;
-      padding: 56px 24px 48px;
+      padding: 56px 24px 52px;
       text-align: center;
       position: relative;
       overflow: hidden;
     }
     .hero::before {
       content: '';
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     }
     .hero-badge {
@@ -57,507 +72,457 @@
       border: 1px solid rgba(255,255,255,.35);
       border-radius: 999px;
       padding: 4px 18px;
-      font-size: .8rem;
-      letter-spacing: .08em;
+      font-size: .8rem; letter-spacing: .08em;
       margin-bottom: 18px;
       backdrop-filter: blur(6px);
     }
     .hero h1 {
-      font-size: clamp(1.6rem, 4vw, 2.6rem);
-      font-weight: 800;
-      letter-spacing: .02em;
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-weight: 800; letter-spacing: .02em;
       text-shadow: 0 2px 12px rgba(0,0,0,.25);
     }
-    .hero p {
-      margin-top: 12px;
-      font-size: .95rem;
-      opacity: .88;
-    }
+    .hero-sub { margin-top: 10px; font-size: .92rem; opacity: .88; }
     .hero-meta {
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-      margin-top: 28px;
-      flex-wrap: wrap;
+      display: flex; justify-content: center;
+      gap: 12px; margin-top: 28px; flex-wrap: wrap;
     }
     .hero-meta span {
       background: rgba(255,255,255,.15);
       border: 1px solid rgba(255,255,255,.28);
       border-radius: 999px;
-      padding: 6px 20px;
-      font-size: .82rem;
+      padding: 6px 18px; font-size: .8rem;
       backdrop-filter: blur(4px);
     }
 
-    /* ── Layout ── */
-    .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px 80px; }
+    /* ══ STICKY NAV ══ */
+    .sticky-nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #e5e7eb;
+      display: flex; justify-content: center;
+      gap: 4px; flex-wrap: wrap; padding: 8px 16px;
+    }
+    .sticky-nav a {
+      text-decoration: none; font-size: .75rem; font-weight: 600;
+      color: #374151; padding: 5px 11px; border-radius: 999px;
+      transition: background .15s, color .15s;
+    }
+    .sticky-nav a:hover { background: var(--blue); color: #fff; }
 
-    /* ── Section ── */
-    .section { margin-bottom: 48px; }
+    /* ══ LAYOUT ══ */
+    .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px 80px; }
+    .section { margin-bottom: 52px; }
     .section-title {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 1.25rem;
-      font-weight: 700;
-      margin-bottom: 22px;
-      padding-bottom: 10px;
+      display: flex; align-items: center; gap: 12px;
+      font-size: 1.18rem; font-weight: 700;
+      margin-bottom: 20px; padding-bottom: 10px;
       border-bottom: 2px solid #e5e7eb;
     }
     .section-title .icon {
-      width: 36px; height: 36px;
-      border-radius: 9px;
+      width: 36px; height: 36px; border-radius: 9px;
       display: flex; align-items: center; justify-content: center;
-      font-size: 1.1rem;
-      flex-shrink: 0;
+      font-size: 1.1rem; flex-shrink: 0;
     }
 
-    /* ── Phase Cards Row ── */
+    /* ══ INFO / WARN NOTES ══ */
+    .note {
+      border-radius: 10px; padding: 14px 18px;
+      font-size: .83rem; margin-bottom: 20px;
+      display: flex; align-items: flex-start; gap: 10px;
+      line-height: 1.65;
+    }
+    .note-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+    .note-blue   { background: #eff6ff; border: 1px solid #bfdbfe; color: #1e40af; }
+    .note-yellow { background: #fefce8; border: 1px solid #fde68a; color: #854d0e; }
+    .note-teal   { background: #f0fdfa; border: 1px solid #99f6e4; color: #0f766e; }
+
+    /* ══ BACKGROUND BANNER ══ */
+    .bg-banner {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 28px 30px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    @media(max-width:640px){ .bg-banner{ grid-template-columns:1fr; } }
+    .bg-item h4 { font-size: .9rem; font-weight: 700; margin-bottom: 8px; display:flex; align-items:center; gap:8px; }
+    .bg-item p  { font-size: .83rem; color: var(--gray); line-height: 1.7; }
+    .bg-item ul { font-size: .83rem; color: var(--gray); padding-left: 18px; line-height: 1.9; }
+
+    /* ══ PHASE CARDS ══ */
     .phase-row {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(4,1fr);
       gap: 16px;
     }
-    @media(max-width: 760px) { .phase-row { grid-template-columns: repeat(2, 1fr); } }
-    @media(max-width: 440px) { .phase-row { grid-template-columns: 1fr; } }
+    @media(max-width:760px){ .phase-row{ grid-template-columns:repeat(2,1fr); } }
+    @media(max-width:440px){ .phase-row{ grid-template-columns:1fr; } }
 
     .phase-card {
-      border-radius: var(--radius);
-      padding: 22px 18px;
-      text-align: center;
-      box-shadow: var(--shadow);
+      border-radius: var(--radius); padding: 22px 18px;
+      text-align: center; box-shadow: var(--shadow);
       transition: transform .2s, box-shadow .2s;
-      cursor: default;
-      position: relative;
-      overflow: hidden;
+      position: relative; overflow: hidden; cursor: default;
     }
     .phase-card:hover { transform: translateY(-4px); box-shadow: 0 10px 32px rgba(0,0,0,.13); }
     .phase-card .num {
-      font-size: 2.2rem;
-      font-weight: 900;
-      opacity: .15;
-      position: absolute;
-      top: 8px; right: 14px;
-      line-height: 1;
+      font-size: 2.2rem; font-weight: 900; opacity: .12;
+      position: absolute; top: 8px; right: 14px; line-height: 1;
     }
     .phase-card .phase-icon { font-size: 2rem; margin-bottom: 10px; }
-    .phase-card h3 { font-size: .95rem; font-weight: 700; margin-bottom: 6px; }
-    .phase-card p  { font-size: .78rem; opacity: .8; }
+    .phase-card h3 { font-size: .92rem; font-weight: 700; margin-bottom: 6px; }
+    .phase-card p  { font-size: .76rem; opacity: .82; }
 
-    .phase-1 { background: linear-gradient(135deg, #dbeafe, #bfdbfe); color: #1e40af; }
-    .phase-2 { background: linear-gradient(135deg, #ccfbf1, #99f6e4); color: #0f766e; }
-    .phase-3 { background: linear-gradient(135deg, #ede9fe, #ddd6fe); color: #6d28d9; }
-    .phase-4 { background: linear-gradient(135deg, #ffedd5, #fed7aa); color: #c2410c; }
+    .phase-1{ background:linear-gradient(135deg,#dbeafe,#bfdbfe); color:#1e40af; }
+    .phase-2{ background:linear-gradient(135deg,#ccfbf1,#99f6e4); color:#0f766e; }
+    .phase-3{ background:linear-gradient(135deg,#ede9fe,#ddd6fe); color:#6d28d9; }
+    .phase-4{ background:linear-gradient(135deg,#ffedd5,#fed7aa); color:#c2410c; }
 
-    /* ── OKR Cards ── */
-    .okr-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-    @media(max-width: 760px) { .okr-grid { grid-template-columns: 1fr; } }
+    /* ══ OKR ══ */
+    .okr-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    @media(max-width:760px){ .okr-grid{ grid-template-columns:1fr; } }
 
     .okr-card {
-      background: var(--white);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      transition: transform .2s;
+      background: var(--white); border-radius: var(--radius);
+      box-shadow: var(--shadow); overflow: hidden; transition: transform .2s;
     }
-    .okr-card:hover { transform: translateY(-3px); }
+    .okr-card:hover{ transform:translateY(-3px); }
     .okr-header {
-      padding: 16px 18px;
-      font-weight: 700;
-      font-size: .95rem;
+      padding: 16px 18px; font-weight: 700; font-size: .93rem;
       display: flex; align-items: flex-start; gap: 10px;
     }
     .okr-header .badge {
-      background: rgba(255,255,255,.3);
-      border-radius: 999px;
-      padding: 2px 10px;
-      font-size: .72rem;
-      font-weight: 800;
-      white-space: nowrap;
-      flex-shrink: 0;
-      margin-top: 2px;
+      background: rgba(255,255,255,.3); border-radius: 999px;
+      padding: 2px 10px; font-size: .72rem; font-weight: 800;
+      white-space: nowrap; flex-shrink: 0; margin-top: 2px;
     }
-    .okr-1 .okr-header { background: linear-gradient(90deg,#1e6fd9,#3b82f6); color:#fff; }
-    .okr-2 .okr-header { background: linear-gradient(90deg,#0d9488,#14b8a6); color:#fff; }
-    .okr-3 .okr-header { background: linear-gradient(90deg,#7c3aed,#a78bfa); color:#fff; }
+    .okr-1 .okr-header{ background:linear-gradient(90deg,#1e6fd9,#3b82f6); color:#fff; }
+    .okr-2 .okr-header{ background:linear-gradient(90deg,#0d9488,#14b8a6); color:#fff; }
+    .okr-3 .okr-header{ background:linear-gradient(90deg,#7c3aed,#a78bfa); color:#fff; }
 
-    .okr-body { padding: 16px 18px; }
-    .kr-item {
-      display: flex; align-items: flex-start; gap: 10px;
-      padding: 10px 0;
-      border-bottom: 1px solid #f3f4f6;
-      font-size: .85rem;
+    .okr-body{ padding:16px 18px; }
+    .kr-item{
+      display:flex; align-items:flex-start; gap:10px;
+      padding:10px 0; border-bottom:1px solid #f3f4f6; font-size:.84rem;
     }
-    .kr-item:last-child { border-bottom: none; }
-    .kr-num {
-      width: 26px; height: 26px;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: .7rem; font-weight: 700;
-      flex-shrink: 0;
-      margin-top: 1px;
+    .kr-item:last-child{ border-bottom:none; }
+    .kr-num{
+      width:26px; height:26px; border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      font-size:.7rem; font-weight:700; flex-shrink:0; margin-top:1px;
     }
-    .okr-1 .kr-num { background: var(--blue-lt); color: var(--blue); }
-    .okr-2 .kr-num { background: var(--teal-lt); color: var(--teal); }
-    .okr-3 .kr-num { background: var(--purple-lt); color: var(--purple); }
+    .okr-1 .kr-num{ background:var(--blue-lt);   color:var(--blue); }
+    .okr-2 .kr-num{ background:var(--teal-lt);   color:var(--teal); }
+    .okr-3 .kr-num{ background:var(--purple-lt); color:var(--purple); }
 
-    /* ── WBS Tree ── */
-    .wbs-container {
-      background: var(--white);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 28px;
+    /* ══ WBS ══ */
+    .wbs-container{
+      background:var(--white); border-radius:var(--radius);
+      box-shadow:var(--shadow); padding:28px;
     }
-    .wbs-root {
-      text-align: center;
-      margin-bottom: 24px;
-    }
-    .wbs-root-box {
-      display: inline-block;
-      background: linear-gradient(135deg,#1e40af,#0d9488);
-      color: #fff;
-      border-radius: 12px;
-      padding: 14px 32px;
-      font-weight: 800;
-      font-size: 1rem;
-      box-shadow: 0 4px 18px rgba(30,64,175,.3);
-    }
-    .wbs-phases {
-      display: grid;
-      grid-template-columns: repeat(4,1fr);
-      gap: 14px;
-    }
-    @media(max-width: 760px) { .wbs-phases { grid-template-columns: repeat(2,1fr); } }
-
-    .wbs-phase { border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,.07); }
-    .wbs-phase-header {
-      padding: 12px 14px;
-      font-weight: 700;
-      font-size: .85rem;
-      display: flex; align-items: center; gap: 8px;
-    }
-    .wbs-ph-1 .wbs-phase-header { background: var(--blue); color:#fff; }
-    .wbs-ph-2 .wbs-phase-header { background: var(--teal); color:#fff; }
-    .wbs-ph-3 .wbs-phase-header { background: var(--purple); color:#fff; }
-    .wbs-ph-4 .wbs-phase-header { background: var(--orange); color:#fff; }
-
-    .wbs-phase-body { background: var(--gray-lt); padding: 10px; }
-    .wbs-item {
-      background: #fff;
-      border-radius: 7px;
-      padding: 8px 12px;
-      margin-bottom: 7px;
-      font-size: .78rem;
-      border-left: 3px solid transparent;
-      box-shadow: 0 1px 4px rgba(0,0,0,.05);
-    }
-    .wbs-item:last-child { margin-bottom: 0; }
-    .wbs-ph-1 .wbs-item { border-color: var(--blue); }
-    .wbs-ph-2 .wbs-item { border-color: var(--teal); }
-    .wbs-ph-3 .wbs-item { border-color: var(--purple); }
-    .wbs-ph-4 .wbs-item { border-color: var(--orange); }
-    .wbs-item strong { display: block; font-size: .8rem; margin-bottom: 3px; }
-    .wbs-sub { color: var(--gray); font-size: .74rem; line-height: 1.6; }
-
-    /* ── Curriculum Table ── */
-    .table-wrap {
-      background: var(--white);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow-x: auto;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: .85rem;
-    }
-    thead tr { background: linear-gradient(90deg,#1e40af,#0d9488); color:#fff; }
-    thead th {
-      padding: 14px 16px;
-      text-align: left;
-      font-weight: 700;
-      white-space: nowrap;
-    }
-    tbody tr { border-bottom: 1px solid #f3f4f6; transition: background .15s; }
-    tbody tr:hover { background: #f8faff; }
-    tbody td { padding: 13px 16px; vertical-align: middle; }
-    .module-badge {
-      display: inline-block;
-      border-radius: 999px;
-      padding: 3px 12px;
-      font-size: .75rem;
-      font-weight: 700;
-    }
-    .level-badge {
-      display: inline-block;
-      border-radius: 7px;
-      padding: 2px 10px;
-      font-size: .74rem;
-      font-weight: 600;
-    }
-
-    /* ── Gantt ── */
-    .gantt-wrap {
-      background: var(--white);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow-x: auto;
-      padding: 24px;
-    }
-    .gantt-table { width: 100%; border-collapse: collapse; font-size: .8rem; min-width: 700px; }
-    .gantt-table th {
-      padding: 10px 12px;
-      font-weight: 700;
-      text-align: center;
-      border: 1px solid #e5e7eb;
-    }
-    .gantt-table td {
-      padding: 9px 12px;
-      border: 1px solid #e5e7eb;
-      white-space: nowrap;
-    }
-    .gantt-table .task-name { min-width: 200px; font-weight: 600; }
-    .gantt-table .sub-task { font-weight: 400; color: var(--gray); padding-left: 24px !important; }
-    .gantt-bar {
-      display: block;
-      border-radius: 999px;
-      height: 22px;
-      animation: growBar .6s ease both;
-    }
-    @keyframes growBar { from { width:0; opacity:0; } to { opacity:1; } }
-    .g-blue   { background: linear-gradient(90deg,#3b82f6,#60a5fa); }
-    .g-teal   { background: linear-gradient(90deg,#14b8a6,#2dd4bf); }
-    .g-purple { background: linear-gradient(90deg,#8b5cf6,#a78bfa); }
-    .g-orange { background: linear-gradient(90deg,#f97316,#fb923c); }
-    .g-green  { background: linear-gradient(90deg,#22c55e,#4ade80); }
-    .phase-row-hdr td {
-      background: #1e293b;
-      color: #fff;
-      font-weight: 700;
-      font-size: .8rem;
-    }
-    .milestone-row td { background: #fefce8; }
-    .milestone-star { font-size: 1.2rem; }
-    .month-hdr { background: #f8faff; font-weight: 700; color: #1e40af; }
-
-    /* ── RACI ── */
-    .raci-wrap {
-      background: var(--white);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow-x: auto;
-    }
-    .raci-table { width: 100%; border-collapse: collapse; font-size: .83rem; }
-    .raci-table th {
-      background: #1e293b; color: #fff;
-      padding: 12px 14px;
-      text-align: center;
-      font-weight: 700;
-    }
-    .raci-table th:first-child { text-align: left; }
-    .raci-table td {
-      padding: 11px 14px;
-      border: 1px solid #f3f4f6;
-      text-align: center;
-    }
-    .raci-table td:first-child { text-align: left; font-weight: 600; }
-    .raci-table tr:hover td { background: #f8faff; }
-    .raci-r { background:#dbeafe; color:#1e40af; font-weight:700; border-radius:6px; padding:2px 10px; display:inline-block; }
-    .raci-a { background:#dcfce7; color:#16a34a; font-weight:700; border-radius:6px; padding:2px 10px; display:inline-block; }
-    .raci-c { background:#ede9fe; color:#7c3aed; font-weight:700; border-radius:6px; padding:2px 10px; display:inline-block; }
-    .raci-i { background:#ffedd5; color:#ea580c; font-weight:700; border-radius:6px; padding:2px 10px; display:inline-block; }
-    .raci-dash { color:#d1d5db; }
-    .raci-legend {
-      display: flex; gap: 12px; flex-wrap: wrap;
-      padding: 14px 18px;
-      background: var(--gray-lt);
-      border-top: 1px solid #e5e7eb;
-      font-size: .78rem;
-    }
-    .raci-legend span { display:flex; align-items:center; gap:6px; }
-
-    /* ── Risk Table ── */
-    .risk-wrap {
-      background: var(--white);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow-x: auto;
-    }
-    .risk-table { width:100%; border-collapse:collapse; font-size:.85rem; }
-    .risk-table th {
-      background: linear-gradient(90deg,#dc2626,#ef4444);
-      color:#fff;
-      padding:13px 16px;
-      text-align:left;
-      font-weight:700;
-    }
-    .risk-table td { padding:13px 16px; border-bottom:1px solid #f3f4f6; vertical-align:top; }
-    .risk-table tr:hover td { background:#fff5f5; }
-    .risk-pill {
+    .wbs-root{ text-align:center; margin-bottom:20px; }
+    .wbs-root-box{
       display:inline-block;
-      border-radius:999px;
-      padding:2px 12px;
-      font-size:.74rem;
-      font-weight:700;
+      background:linear-gradient(135deg,#1e40af,#0d9488);
+      color:#fff; border-radius:12px; padding:14px 32px;
+      font-weight:800; font-size:1rem;
+      box-shadow:0 4px 18px rgba(30,64,175,.3);
     }
-    .risk-high   { background:#fee2e2; color:#dc2626; }
-    .risk-medium { background:#ffedd5; color:#ea580c; }
-    .risk-low    { background:#dcfce7; color:#16a34a; }
+    .wbs-phases{
+      display:grid; grid-template-columns:repeat(4,1fr); gap:14px;
+    }
+    @media(max-width:760px){ .wbs-phases{ grid-template-columns:repeat(2,1fr); } }
 
-    /* ── Milestone Timeline ── */
-    .milestone-timeline {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
+    .wbs-phase{ border-radius:10px; overflow:hidden; box-shadow:0 2px 10px rgba(0,0,0,.07); }
+    .wbs-phase-header{
+      padding:12px 14px; font-weight:700; font-size:.85rem;
+      display:flex; align-items:center; gap:8px;
+    }
+    .wbs-ph-1 .wbs-phase-header{ background:var(--blue);   color:#fff; }
+    .wbs-ph-2 .wbs-phase-header{ background:var(--teal);   color:#fff; }
+    .wbs-ph-3 .wbs-phase-header{ background:var(--purple); color:#fff; }
+    .wbs-ph-4 .wbs-phase-header{ background:var(--orange); color:#fff; }
+
+    .wbs-phase-body{ background:var(--gray-lt); padding:10px; }
+    .wbs-item{
+      background:#fff; border-radius:7px; padding:9px 12px; margin-bottom:7px;
+      font-size:.78rem; border-left:3px solid transparent;
+      box-shadow:0 1px 4px rgba(0,0,0,.05);
+    }
+    .wbs-item:last-child{ margin-bottom:0; }
+    .wbs-ph-1 .wbs-item{ border-color:var(--blue); }
+    .wbs-ph-2 .wbs-item{ border-color:var(--teal); }
+    .wbs-ph-3 .wbs-item{ border-color:var(--purple); }
+    .wbs-ph-4 .wbs-item{ border-color:var(--orange); }
+    .wbs-item strong{ display:block; font-size:.8rem; margin-bottom:3px; }
+    .wbs-sub{ color:var(--gray); font-size:.74rem; line-height:1.65; }
+
+    /* ══ CURRICULUM TABLE ══ */
+    .table-wrap{
+      background:var(--white); border-radius:var(--radius);
+      box-shadow:var(--shadow); overflow-x:auto;
+    }
+    table{ width:100%; border-collapse:collapse; font-size:.84rem; }
+    thead tr{ background:linear-gradient(90deg,#1e40af,#0d9488); color:#fff; }
+    thead th{ padding:13px 16px; text-align:left; font-weight:700; white-space:nowrap; }
+    tbody tr{ border-bottom:1px solid #f3f4f6; transition:background .15s; }
+    tbody tr:hover{ background:#f8faff; }
+    tbody td{ padding:12px 16px; vertical-align:middle; }
+
+    .module-badge{
+      display:inline-block; border-radius:999px;
+      padding:3px 12px; font-size:.74rem; font-weight:700;
+    }
+    .level-badge{
+      display:inline-block; border-radius:7px;
+      padding:2px 10px; font-size:.73rem; font-weight:600;
+    }
+
+    /* ══ INSTRUCTOR CARDS ══ */
+    .instructor-grid{
+      display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:18px;
+    }
+    .instr-card{
+      background:#fff; border-radius:var(--radius);
+      box-shadow:var(--shadow); overflow:hidden; transition:transform .2s;
+    }
+    .instr-card:hover{ transform:translateY(-3px); }
+    .instr-header{ padding:18px 20px; color:#fff; }
+    .instr-avatar{ font-size:2rem; margin-bottom:8px; }
+    .instr-header h3{ font-size:1rem; font-weight:700; margin-bottom:3px; }
+    .instr-header p { font-size:.78rem; opacity:.85; }
+    .instr-body{ padding:16px 20px; font-size:.83rem; }
+    .instr-row{
+      display:flex; align-items:flex-start; gap:10px;
+      padding:8px 0; border-bottom:1px solid #f3f4f6;
+    }
+    .instr-row:last-child{ border-bottom:none; }
+    .instr-label{
+      font-weight:700; font-size:.75rem; white-space:nowrap;
+      color:var(--gray); min-width:60px; margin-top:1px;
+    }
+
+    /* ══ BRAVO POINT SECTION ══ */
+    .bravo-box{
+      background: linear-gradient(135deg, #0061d5 0%, #1e40af 50%, #7c3aed 100%);
+      border-radius: var(--radius);
+      padding: 32px 36px;
+      color: #fff;
+      box-shadow: 0 8px 32px rgba(0,97,213,.35);
       position: relative;
-      padding-left: 32px;
+      overflow: hidden;
     }
-    .milestone-timeline::before {
-      content:'';
-      position:absolute;
-      left:14px; top:0; bottom:0;
-      width:3px;
-      background: linear-gradient(180deg,#3b82f6,#14b8a6,#8b5cf6,#f97316,#22c55e,#a21caf);
+    .bravo-box::before{
+      content:'⭐';
+      position:absolute; right:-10px; top:-20px;
+      font-size:9rem; opacity:.08; transform:rotate(15deg);
+    }
+    .bravo-box h3{
+      font-size:1.2rem; font-weight:800;
+      display:flex; align-items:center; gap:10px;
+      margin-bottom:10px;
+    }
+    .bravo-box p{ font-size:.88rem; opacity:.9; margin-bottom:20px; line-height:1.75; }
+    .bravo-cards{
+      display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:14px;
+    }
+    .bravo-card{
+      background:rgba(255,255,255,.15);
+      border:1px solid rgba(255,255,255,.25);
+      border-radius:10px; padding:16px 18px;
+      backdrop-filter:blur(6px);
+      transition:background .2s;
+    }
+    .bravo-card:hover{ background:rgba(255,255,255,.22); }
+    .bravo-card .bp-icon{ font-size:1.6rem; margin-bottom:8px; }
+    .bravo-card .bp-label{ font-size:.8rem; opacity:.8; margin-bottom:4px; }
+    .bravo-card .bp-value{ font-size:1rem; font-weight:700; }
+    .bravo-note{
+      margin-top:18px;
+      background:rgba(255,255,255,.12);
+      border-radius:8px; padding:12px 16px;
+      font-size:.8rem; opacity:.88; line-height:1.7;
+      border-left:3px solid rgba(255,255,255,.5);
+    }
+
+    /* ══ GANTT ══ */
+    .gantt-wrap{
+      background:var(--white); border-radius:var(--radius);
+      box-shadow:var(--shadow); overflow-x:auto; padding:24px;
+    }
+    .gantt-table{ width:100%; border-collapse:collapse; font-size:.79rem; min-width:680px; }
+    .gantt-table th{
+      padding:10px 12px; font-weight:700; text-align:center; border:1px solid #e5e7eb;
+    }
+    .gantt-table td{ padding:9px 12px; border:1px solid #e5e7eb; }
+    .gantt-table .task-name{ min-width:210px; font-weight:600; }
+    .gantt-table .sub-task{ font-weight:400; color:var(--gray); padding-left:24px !important; }
+    .gantt-bar{
+      display:block; border-radius:999px; height:22px;
+      animation:growBar .6s ease both;
+    }
+    @keyframes growBar{ from{width:0;opacity:0}to{opacity:1} }
+    .g-blue  { background:linear-gradient(90deg,#3b82f6,#60a5fa); }
+    .g-teal  { background:linear-gradient(90deg,#14b8a6,#2dd4bf); }
+    .g-purple{ background:linear-gradient(90deg,#8b5cf6,#a78bfa); }
+    .g-orange{ background:linear-gradient(90deg,#f97316,#fb923c); }
+    .phase-row-hdr td{ background:#1e293b; color:#fff; font-weight:700; font-size:.79rem; }
+    .milestone-row td{ background:#fefce8; }
+    .month-hdr{ background:#f8faff; font-weight:700; color:#1e40af; }
+
+    /* ══ RACI ══ */
+    .raci-wrap{
+      background:var(--white); border-radius:var(--radius);
+      box-shadow:var(--shadow); overflow-x:auto;
+    }
+    .raci-table{ width:100%; border-collapse:collapse; font-size:.82rem; }
+    .raci-table th{
+      background:#1e293b; color:#fff;
+      padding:12px 14px; text-align:center; font-weight:700;
+    }
+    .raci-table th:first-child{ text-align:left; }
+    .raci-table td{ padding:11px 14px; border:1px solid #f3f4f6; text-align:center; }
+    .raci-table td:first-child{ text-align:left; font-weight:600; }
+    .raci-table tr:hover td{ background:#f8faff; }
+    .raci-r{ background:#dbeafe; color:#1e40af; font-weight:700; border-radius:6px; padding:2px 10px; display:inline-block; }
+    .raci-a{ background:#dcfce7; color:#16a34a; font-weight:700; border-radius:6px; padding:2px 10px; display:inline-block; }
+    .raci-c{ background:#ede9fe; color:#7c3aed; font-weight:700; border-radius:6px; padding:2px 10px; display:inline-block; }
+    .raci-i{ background:#ffedd5; color:#ea580c; font-weight:700; border-radius:6px; padding:2px 10px; display:inline-block; }
+    .raci-dash{ color:#d1d5db; }
+    .raci-legend{
+      display:flex; gap:14px; flex-wrap:wrap;
+      padding:12px 18px; background:var(--gray-lt);
+      border-top:1px solid #e5e7eb; font-size:.78rem;
+    }
+
+    /* ══ RISK ══ */
+    .risk-wrap{ background:var(--white); border-radius:var(--radius); box-shadow:var(--shadow); overflow-x:auto; }
+    .risk-table{ width:100%; border-collapse:collapse; font-size:.84rem; }
+    .risk-table th{
+      background:linear-gradient(90deg,#dc2626,#ef4444); color:#fff;
+      padding:13px 16px; text-align:left; font-weight:700;
+    }
+    .risk-table td{ padding:13px 16px; border-bottom:1px solid #f3f4f6; vertical-align:top; }
+    .risk-table tr:hover td{ background:#fff5f5; }
+    .risk-pill{ display:inline-block; border-radius:999px; padding:2px 12px; font-size:.73rem; font-weight:700; }
+    .risk-high  { background:#fee2e2; color:#dc2626; }
+    .risk-medium{ background:#ffedd5; color:#ea580c; }
+    .risk-low   { background:#dcfce7; color:#16a34a; }
+
+    /* ══ MILESTONE TIMELINE ══ */
+    .milestone-timeline{
+      display:flex; flex-direction:column;
+      position:relative; padding-left:32px;
+    }
+    .milestone-timeline::before{
+      content:''; position:absolute;
+      left:14px; top:0; bottom:0; width:3px;
+      background:linear-gradient(180deg,#3b82f6,#14b8a6,#8b5cf6,#f97316,#22c55e,#a21caf);
       border-radius:999px;
     }
-    .ms-item {
-      display:flex; align-items:flex-start; gap:18px;
-      padding:18px 0;
-      position:relative;
-    }
-    .ms-dot {
-      width:28px; height:28px;
-      border-radius:50%;
+    .ms-item{ display:flex; align-items:flex-start; gap:18px; padding:16px 0; }
+    .ms-dot{
+      width:28px; height:28px; border-radius:50%;
       display:flex; align-items:center; justify-content:center;
-      font-size:.8rem; font-weight:700; color:#fff;
-      flex-shrink:0;
-      margin-left:-42px;
-      margin-top:2px;
-      box-shadow:0 2px 8px rgba(0,0,0,.18);
-      border:3px solid #fff;
+      font-size:.78rem; font-weight:700; color:#fff;
+      flex-shrink:0; margin-left:-42px; margin-top:2px;
+      box-shadow:0 2px 8px rgba(0,0,0,.18); border:3px solid #fff;
     }
-    .ms-content {
-      background:#fff;
-      border-radius:10px;
-      padding:14px 18px;
-      box-shadow:0 2px 10px rgba(0,0,0,.07);
-      flex:1;
-      transition:transform .2s;
+    .ms-content{
+      background:#fff; border-radius:10px; padding:14px 18px;
+      box-shadow:0 2px 10px rgba(0,0,0,.07); flex:1; transition:transform .2s;
     }
-    .ms-content:hover { transform:translateX(4px); }
-    .ms-content h4 { font-size:.9rem; font-weight:700; margin-bottom:4px; }
-    .ms-content p  { font-size:.8rem; color:var(--gray); }
-    .ms-time {
-      font-size:.74rem;
-      font-weight:700;
-      border-radius:999px;
-      padding:2px 12px;
-      white-space:nowrap;
-      flex-shrink:0;
-      margin-top:5px;
+    .ms-content:hover{ transform:translateX(4px); }
+    .ms-content h4{ font-size:.88rem; font-weight:700; margin-bottom:4px; }
+    .ms-content p { font-size:.8rem; color:var(--gray); }
+    .ms-time{
+      font-size:.73rem; font-weight:700; border-radius:999px;
+      padding:2px 12px; white-space:nowrap; flex-shrink:0; margin-top:5px;
     }
 
-    /* ── Tools Grid ── */
-    .tools-grid {
-      display:grid;
-      grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
-      gap:14px;
-    }
-    .tool-card {
-      background:#fff;
-      border-radius:12px;
-      padding:18px;
-      box-shadow:var(--shadow);
-      display:flex; align-items:center; gap:14px;
-      transition:transform .2s;
-      text-decoration:none; color:inherit;
-    }
-    .tool-card:hover { transform:translateY(-3px); box-shadow:0 8px 28px rgba(0,0,0,.12); }
-    .tool-icon {
-      width:44px; height:44px;
-      border-radius:10px;
-      display:flex; align-items:center; justify-content:center;
-      font-size:1.4rem;
-      flex-shrink:0;
-    }
-    .tool-info h4 { font-size:.85rem; font-weight:700; margin-bottom:2px; }
-    .tool-info p  { font-size:.74rem; color:var(--gray); }
+    /* ══ FADE-IN ══ */
+    .fade-in{ opacity:0; transform:translateY(22px); transition:opacity .55s ease, transform .55s ease; }
+    .fade-in.visible{ opacity:1; transform:translateY(0); }
 
-    /* ── Footer ── */
-    .footer {
-      text-align:center;
-      padding:32px 20px;
-      color:var(--gray);
-      font-size:.8rem;
-      border-top:1px solid #e5e7eb;
-      margin-top:40px;
+    /* ══ FOOTER ══ */
+    .footer{
+      text-align:center; padding:32px 20px;
+      color:var(--gray); font-size:.8rem;
+      border-top:1px solid #e5e7eb; margin-top:40px;
     }
-
-    /* ── Scroll-in animation ── */
-    .fade-in {
-      opacity:0;
-      transform:translateY(22px);
-      transition:opacity .55s ease, transform .55s ease;
-    }
-    .fade-in.visible { opacity:1; transform:translateY(0); }
-
-    /* ── Sticky Nav ── */
-    .sticky-nav {
-      position:sticky; top:0; z-index:100;
-      background:rgba(255,255,255,.92);
-      backdrop-filter:blur(12px);
-      border-bottom:1px solid #e5e7eb;
-      display:flex; justify-content:center;
-      gap:4px; flex-wrap:wrap;
-      padding:8px 16px;
-    }
-    .sticky-nav a {
-      text-decoration:none;
-      font-size:.76rem;
-      font-weight:600;
-      color:#374151;
-      padding:5px 12px;
-      border-radius:999px;
-      transition:background .15s, color .15s;
-    }
-    .sticky-nav a:hover { background:var(--blue); color:#fff; }
   </style>
 </head>
 <body>
 
-<!-- Hero -->
+<!-- ══════════════════════════════
+     HERO
+══════════════════════════════ -->
 <header class="hero">
-  <div class="hero-badge">🏭 Yield Analysis Department · 2026</div>
-  <h1>良率分析部門訓練專案規劃</h1>
-  <p>整合 OKR · WBS · Gantt Chart · Kirkpatrick 四層評估 · RACI 責任矩陣</p>
+  <div class="hero-badge">🏭 Yield Analysis Dept. · New Engineer Onboarding Training 2026</div>
+  <h1>良率分析部門<br>新進工程師訓練專案</h1>
+  <p class="hero-sub">針對到職未滿一年新進工程師 · 建立部門統一標準教材 · 資深工程師內部授課</p>
   <div class="hero-meta">
-    <span>📅 2026 年度計畫</span>
-    <span>🎯 6 大課程模組</span>
-    <span>👨‍🏫 3+ 位內部講師</span>
+    <span>🎯 授課對象：到職未滿 1 年</span>
+    <span>📚 6 大課程模組</span>
+    <span>👨‍🏫 資深工程師擔任講師</span>
+    <span>⭐ Bravo Point 講師獎勵</span>
     <span>📋 4 大執行階段</span>
   </div>
 </header>
 
-<!-- Sticky Nav -->
+<!-- ══ NAV ══ -->
 <nav class="sticky-nav">
+  <a href="#background">專案背景</a>
   <a href="#overview">專案概覽</a>
   <a href="#okr">OKR 目標</a>
   <a href="#wbs">WBS 架構</a>
   <a href="#curriculum">課程模組</a>
+  <a href="#instructor">講師安排</a>
+  <a href="#bravo">Bravo Point</a>
   <a href="#gantt">甘特圖</a>
   <a href="#raci">RACI 矩陣</a>
   <a href="#risk">風險管理</a>
   <a href="#milestone">里程碑</a>
-  <a href="#tools">推薦工具</a>
 </nav>
 
 <div class="container">
 
-  <!-- ── Section 1: Overview ── -->
+  <!-- ══ 0. BACKGROUND ══ -->
+  <section class="section fade-in" id="background">
+    <div class="section-title">
+      <div class="icon" style="background:var(--blue-lt);color:var(--blue)">📌</div>
+      專案背景與起源
+    </div>
+    <div class="bg-banner">
+      <div class="bg-item">
+        <h4>🔍 問題現況（Pain Points）</h4>
+        <ul>
+          <li>部門各課教材 <strong>格式、深度不一致</strong>，缺乏統一標準</li>
+          <li>新進工程師報到後，缺乏系統性的入門訓練引導</li>
+          <li>知識傳承依賴資深工程師個人經驗，尚未文件化</li>
+          <li>新人面對不同課組的 SOP 及分析方法，需花費大量時間自行摸索</li>
+        </ul>
+      </div>
+      <div class="bg-item">
+        <h4>🚀 本專案目標（Why This Project）</h4>
+        <ul>
+          <li>建立部門 <strong>統一標準化教材</strong>，消除各課教材落差</li>
+          <li>設計系統性課程，讓新進工程師快速理解部門核心良率分析方法</li>
+          <li>發揮資深工程師專業知識，形成部門 <strong>知識傳承機制</strong></li>
+          <li>以 <strong>Bravo Point</strong> 認可並獎勵講師貢獻</li>
+        </ul>
+      </div>
+    </div>
+    <div class="note note-blue" style="margin-top:16px;">
+      <span class="note-icon">ℹ️</span>
+      <div>本計畫為部門內部自辦訓練，授課由部門資深工程師擔任，<strong>無需額外預算、外部場地或第三方平台</strong>，教材以整合部門現有文件為主，透過標準化流程建立一致的訓練品質。</div>
+    </div>
+  </section>
+
+  <!-- ══ 1. OVERVIEW ══ -->
   <section class="section fade-in" id="overview">
     <div class="section-title">
       <div class="icon" style="background:var(--blue-lt);color:var(--blue)">🗂️</div>
@@ -568,30 +533,30 @@
         <div class="num">1</div>
         <div class="phase-icon">🚀</div>
         <h3>Phase 1<br>啟動 & 規劃</h3>
-        <p>需求調查・OKR 設定・專案小組組建・預算規劃</p>
+        <p>新人需求盤點・OKR 設定・講師確認・課程排程規劃</p>
       </div>
       <div class="phase-card phase-2">
         <div class="num">2</div>
         <div class="phase-icon">📚</div>
-        <h3>Phase 2<br>教材整備</h3>
-        <p>教材盤點・數位化・知識庫建立・講師培訓</p>
+        <h3>Phase 2<br>教材標準化</h3>
+        <p>現有教材盤點・格式統一・標準化製作・主管審核</p>
       </div>
       <div class="phase-card phase-3">
         <div class="num">3</div>
         <div class="phase-icon">🎓</div>
         <h3>Phase 3<br>課程執行</h3>
-        <p>開課通知・授課・案例分析・實作練習・結訓測驗</p>
+        <p>開課通知・資深工程師授課・案例討論・結訓測驗</p>
       </div>
       <div class="phase-card phase-4">
         <div class="num">4</div>
         <div class="phase-icon">📊</div>
-        <h3>Phase 4<br>成效評估 & 優化</h3>
-        <p>Kirkpatrick 四層評估・OKR 檢核・教材更新・下期規劃</p>
+        <h3>Phase 4<br>評估 & 持續優化</h3>
+        <p>成效評估・OKR 檢核・教材更新・下期規劃</p>
       </div>
     </div>
   </section>
 
-  <!-- ── Section 2: OKR ── -->
+  <!-- ══ 2. OKR ══ -->
   <section class="section fade-in" id="okr">
     <div class="section-title">
       <div class="icon" style="background:var(--blue-lt);color:var(--blue)">🎯</div>
@@ -601,70 +566,68 @@
 
       <div class="okr-card okr-1">
         <div class="okr-header">
-          <span class="badge">O1</span>
-          建立完整部門知識庫
+          <span class="badge">O1</span>建立部門統一標準化教材庫
         </div>
         <div class="okr-body">
           <div class="kr-item">
             <div class="kr-num">KR1</div>
-            <div>完成 <strong>100%</strong> 部門教材數位化整理</div>
+            <div>完成各課現有教材 <strong>100% 盤點</strong>，識別格式差異與缺漏</div>
           </div>
           <div class="kr-item">
             <div class="kr-num">KR2</div>
-            <div>教材分類覆蓋 <strong>≥ 5</strong> 大良率分析主題模組</div>
+            <div>產出 <strong>6 套</strong>格式統一的標準化課程教材</div>
           </div>
           <div class="kr-item">
             <div class="kr-num">KR3</div>
-            <div>建立線上知識庫平台，成員存取率 <strong>≥ 90%</strong></div>
+            <div>所有教材通過 <strong>部門主管審核</strong>，品質一致性確認</div>
           </div>
         </div>
       </div>
 
       <div class="okr-card okr-2">
         <div class="okr-header">
-          <span class="badge">O2</span>
-          啟動內部講師培訓計畫
+          <span class="badge">O2</span>建立資深工程師授課機制
         </div>
         <div class="okr-body">
           <div class="kr-item">
             <div class="kr-num">KR1</div>
-            <div>識別並認證 <strong>≥ 3</strong> 位資深工程師擔任內部講師</div>
+            <div>指派 <strong>≥ 3 位</strong>資深工程師，完成 6 大模組授課分工</div>
           </div>
           <div class="kr-item">
             <div class="kr-num">KR2</div>
-            <div>每位講師完成至少 <strong>2 場</strong>課程授課</div>
+            <div>每位講師年度內完成 <strong>≥ 2 場</strong>課程授課</div>
           </div>
           <div class="kr-item">
             <div class="kr-num">KR3</div>
-            <div>學員課程滿意度評分 <strong>≥ 4.5 / 5.0</strong></div>
+            <div>學員課程滿意度回饋評分 <strong>≥ 4.5 / 5.0</strong></div>
           </div>
         </div>
       </div>
 
       <div class="okr-card okr-3">
         <div class="okr-header">
-          <span class="badge">O3</span>
-          提升部門整體技術能力
+          <span class="badge">O3</span>新進工程師快速建立良率分析能力
         </div>
         <div class="okr-body">
           <div class="kr-item">
             <div class="kr-num">KR1</div>
-            <div><strong>≥ 80%</strong> 成員完成訓練並通過結訓測驗</div>
+            <div>到職 <strong>6 個月內</strong>完成全部 6 大模組訓練</div>
           </div>
           <div class="kr-item">
             <div class="kr-num">KR2</div>
-            <div>受訓成員技能評估分數提升 <strong>≥ 20%</strong></div>
+            <div><strong>≥ 85%</strong> 新進工程師通過結訓測驗（及格標準 80 分）</div>
           </div>
           <div class="kr-item">
             <div class="kr-num">KR3</div>
-            <div>訓練後 3 個月內良率問題解決速度可見改善</div>
+            <div>主管評估新人 <strong>獨立執行基礎良率分析</strong>的時間較前縮短</div>
           </div>
         </div>
       </div>
+
     </div>
   </section>
 
-  <!-- ── Section 3: WBS ── -->
+  <!-- ══ 3. WBS ══ -->
   <section class="section fade-in" id="wbs">
     <div class="section-title">
       <div class="icon" style="background:var(--teal-lt);color:var(--teal)">📋</div>
@@ -672,48 +635,96 @@
     </div>
     <div class="wbs-container">
       <div class="wbs-root">
-        <div class="wbs-root-box">🏭 良率分析部門訓練專案</div>
+        <div class="wbs-root-box">🏭 良率分析部門 · 新進工程師訓練專案</div>
       </div>
-      <div style="text-align:center;color:#9ca3af;font-size:1.6rem;margin:8px 0;">⬇</div>
+      <div style="text-align:center;color:#9ca3af;font-size:1.5rem;margin:10px 0 18px">⬇</div>
       <div class="wbs-phases">
 
         <div class="wbs-phase wbs-ph-1">
           <div class="wbs-phase-header">🚀 Phase 1：啟動 & 規劃</div>
           <div class="wbs-phase-body">
-            <div class="wbs-item"><strong>1.1 訓練需求調查 (TNA)</strong><div class="wbs-sub">問卷設計・技能落差分析・優先主題確認</div></div>
-            <div class="wbs-item"><strong>1.2 OKR 設定 & 里程碑</strong><div class="wbs-sub">設定目標與關鍵成果</div></div>
-            <div class="wbs-item"><strong>1.3 專案小組組建</strong><div class="wbs-sub">PM 指派・講師遴選・行政支援確認</div></div>
-            <div class="wbs-item"><strong>1.4 預算規劃</strong><div class="wbs-sub">訓練費用・平台費用・教材製作費用</div></div>
+            <div class="wbs-item">
+              <strong>1.1 新人需求訪談</strong>
+              <div class="wbs-sub">訪談近期新進工程師・盤點入職後知識落差</div>
+            </div>
+            <div class="wbs-item">
+              <strong>1.2 OKR 設定與核准</strong>
+              <div class="wbs-sub">訂定年度訓練目標與 KR・部門主管核准</div>
+            </div>
+            <div class="wbs-item">
+              <strong>1.3 講師指派與分工</strong>
+              <div class="wbs-sub">確認各模組負責講師・說明 Bravo Point 獎勵機制</div>
+            </div>
+            <div class="wbs-item">
+              <strong>1.4 年度課程排程</strong>
+              <div class="wbs-sub">確認授課時間・整合部門行事曆・設定每期班次</div>
+            </div>
           </div>
         </div>
 
         <div class="wbs-phase wbs-ph-2">
-          <div class="wbs-phase-header">📚 Phase 2：教材整備</div>
+          <div class="wbs-phase-header">📚 Phase 2：教材標準化</div>
           <div class="wbs-phase-body">
-            <div class="wbs-item"><strong>2.1 教材盤點 & 分類</strong><div class="wbs-sub">收集現有 PPT/SOP/報告・依模組分類・識別缺漏</div></div>
-            <div class="wbs-item"><strong>2.2 教材數位化 & 標準化</strong><div class="wbs-sub">統一格式・上傳知識庫・版控機制</div></div>
-            <div class="wbs-item"><strong>2.3 內部講師培訓 (T-T-T)</strong><div class="wbs-sub">講師技巧工作坊・Dry Run・講師認證</div></div>
-            <div class="wbs-item"><strong>2.4 場地 / 平台準備</strong><div class="wbs-sub">實體場地預訂・線上平台設定</div></div>
+            <div class="wbs-item">
+              <strong>2.1 各課現有教材盤點</strong>
+              <div class="wbs-sub">收集各課 PPT / SOP / 分析報告・比較差異</div>
+            </div>
+            <div class="wbs-item">
+              <strong>2.2 建立統一教材模板</strong>
+              <div class="wbs-sub">訂定章節架構、格式規範、深度標準</div>
+            </div>
+            <div class="wbs-item">
+              <strong>2.3 教材製作 & 補充</strong>
+              <div class="wbs-sub">各課依模板整合現有內容・補充缺漏章節・加入真實案例</div>
+            </div>
+            <div class="wbs-item">
+              <strong>2.4 教材同儕互審 & 主管 Final Review</strong>
+              <div class="wbs-sub">講師互相審閱・主管核准・版本鎖定歸檔</div>
+            </div>
           </div>
         </div>
 
         <div class="wbs-phase wbs-ph-3">
           <div class="wbs-phase-header">🎓 Phase 3：課程執行</div>
           <div class="wbs-phase-body">
-            <div class="wbs-item"><strong>3.1 課程模組安排</strong><div class="wbs-sub">M1~M6 排程・學員分組</div></div>
-            <div class="wbs-item"><strong>3.2 開課通知 & 報名</strong><div class="wbs-sub">Email 通知・報名管理</div></div>
-            <div class="wbs-item"><strong>3.3 課程進行</strong><div class="wbs-sub">理論授課・案例分析・實作練習・Q&A</div></div>
-            <div class="wbs-item"><strong>3.4 出席記錄 & 結訓測驗</strong><div class="wbs-sub">出席追蹤・測驗設計・成績管理</div></div>
+            <div class="wbs-item">
+              <strong>3.1 開課通知 & 名單確認</strong>
+              <div class="wbs-sub">提前通知新進工程師・確認參與名單</div>
+            </div>
+            <div class="wbs-item">
+              <strong>3.2 課程授課</strong>
+              <div class="wbs-sub">理論講授・部門真實良率案例討論・Q&A</div>
+            </div>
+            <div class="wbs-item">
+              <strong>3.3 實作練習</strong>
+              <div class="wbs-sub">使用部門實際數據操作・課後作業指派</div>
+            </div>
+            <div class="wbs-item">
+              <strong>3.4 結訓測驗 & 出席管理</strong>
+              <div class="wbs-sub">測驗設計・施測・成績統計・缺課補課</div>
+            </div>
           </div>
         </div>
 
         <div class="wbs-phase wbs-ph-4">
           <div class="wbs-phase-header">📊 Phase 4：評估 & 優化</div>
           <div class="wbs-phase-body">
-            <div class="wbs-item"><strong>4.1 Kirkpatrick 四層評估</strong><div class="wbs-sub">L1 反應・L2 學習・L3 行為・L4 成果</div></div>
-            <div class="wbs-item"><strong>4.2 OKR 達成檢核</strong><div class="wbs-sub">關鍵成果達成率審查</div></div>
-            <div class="wbs-item"><strong>4.3 教材更新 & 知識庫維護</strong><div class="wbs-sub">依回饋修訂教材</div></div>
-            <div class="wbs-item"><strong>4.4 下期訓練規劃</strong><div class="wbs-sub">規劃次期課程計畫</div></div>
+            <div class="wbs-item">
+              <strong>4.1 學員滿意度回饋</strong>
+              <div class="wbs-sub">每堂課後問卷・彙整意見回饋給講師</div>
+            </div>
+            <div class="wbs-item">
+              <strong>4.2 學習成效追蹤</strong>
+              <div class="wbs-sub">測驗成績分析・主管 3 個月後工作應用評估</div>
+            </div>
+            <div class="wbs-item">
+              <strong>4.3 OKR 達成率檢核</strong>
+              <div class="wbs-sub">逐項核對關鍵成果・提交訓練成效報告</div>
+            </div>
+            <div class="wbs-item">
+              <strong>4.4 教材更新 & 下期規劃</strong>
+              <div class="wbs-sub">依回饋修訂教材版本・規劃下期班次</div>
+            </div>
           </div>
         </div>
 
@@ -721,11 +732,15 @@
     </div>
   </section>
 
-  <!-- ── Section 4: Curriculum ── -->
+  <!-- ══ 4. CURRICULUM ══ -->
   <section class="section fade-in" id="curriculum">
     <div class="section-title">
       <div class="icon" style="background:var(--purple-lt);color:var(--purple)">📚</div>
-      四、課程架構模組（良率分析專屬）
+      四、課程模組設計（新進工程師適用）
+    </div>
+    <div class="note note-yellow">
+      <span class="note-icon">🎓</span>
+      <div>所有課程以<strong>到職未滿一年的新進工程師</strong>為對象，課程設計強調「從零建立」，以部門真實良率分析案例貫穿，由淺至深循序漸進。</div>
     </div>
     <div class="table-wrap">
       <table>
@@ -733,100 +748,241 @@
           <tr>
             <th>模組</th>
             <th>課程主題</th>
-            <th>目標對象</th>
+            <th>學習目標</th>
             <th>授課形式</th>
-            <th>講師</th>
+            <th>時數</th>
+            <th>負責講師</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td><span class="module-badge" style="background:#dbeafe;color:#1e40af">M1</span></td>
             <td><strong>良率基礎概念 & 統計方法</strong></td>
-            <td><span class="level-badge" style="background:#dcfce7;color:#16a34a">新進工程師</span></td>
+            <td>理解良率定義、基礎統計指標 (Mean/Std/Cpk)</td>
             <td>💬 講授 + 練習</td>
+            <td>4 hr</td>
             <td>👨‍🏫 資深工程師 A</td>
           </tr>
           <tr>
             <td><span class="module-badge" style="background:#ccfbf1;color:#0f766e">M2</span></td>
-            <td><strong>製程能力分析 (Cpk / Ppk)</strong></td>
-            <td><span class="level-badge" style="background:#dbeafe;color:#1e40af">初 / 中級工程師</span></td>
+            <td><strong>製程能力分析（Cpk / Ppk）</strong></td>
+            <td>能獨立計算並解讀製程能力指數</td>
             <td>📊 案例分析 + 實作</td>
+            <td>4 hr</td>
             <td>👨‍🏫 資深工程師 B</td>
           </tr>
           <tr>
             <td><span class="module-badge" style="background:#ede9fe;color:#6d28d9">M3</span></td>
-            <td><strong>失效模式分析 (FMEA / FDC)</strong></td>
-            <td><span class="level-badge" style="background:#dbeafe;color:#1e40af">中級工程師</span></td>
+            <td><strong>良率失效模式介紹（FMEA / FDC 基礎）</strong></td>
+            <td>認識常見失效模式，能閱讀 FDC 數據</td>
             <td>🔍 案例研討</td>
+            <td>4 hr</td>
             <td>👨‍🏫 資深工程師 A</td>
           </tr>
           <tr>
             <td><span class="module-badge" style="background:#ffedd5;color:#c2410c">M4</span></td>
-            <td><strong>資料分析工具應用 (JMP / Python / R)</strong></td>
-            <td><span class="level-badge" style="background:#f3f4f6;color:#374151">全體工程師</span></td>
+            <td><strong>資料分析工具入門（JMP / Python 基礎）</strong></td>
+            <td>能使用部門常用工具進行基本資料分析</td>
             <td>💻 實作工作坊</td>
+            <td>8 hr</td>
             <td>👨‍🏫 資深工程師 C</td>
           </tr>
           <tr>
             <td><span class="module-badge" style="background:#dcfce7;color:#15803d">M5</span></td>
-            <td><strong>根因分析與問題解決 (8D / Fishbone)</strong></td>
-            <td><span class="level-badge" style="background:#ede9fe;color:#6d28d9">中 / 資深工程師</span></td>
-            <td>🧩 案例 + 演練</td>
+            <td><strong>根因分析方法（8D / Fishbone 入門）</strong></td>
+            <td>能協助參與良率問題分析會議，理解 8D 流程</td>
+            <td>🧩 案例演練</td>
+            <td>4 hr</td>
             <td>👨‍🏫 資深工程師 B</td>
           </tr>
           <tr>
             <td><span class="module-badge" style="background:#fee2e2;color:#dc2626">M6</span></td>
-            <td><strong>良率提升專案管理 (DOE / SPC)</strong></td>
-            <td><span class="level-badge" style="background:#fee2e2;color:#dc2626">資深工程師</span></td>
-            <td>🚀 專案導向學習</td>
-            <td>👨‍🏫 資深主管 / 外部顧問</td>
+            <td><strong>部門良率分析 SOP & 工作流程實務</strong></td>
+            <td>熟悉部門標準作業流程，能獨立執行日常良率任務</td>
+            <td>🏭 實務導覽 + 演練</td>
+            <td>4 hr</td>
+            <td>👨‍🏫 資深工程師 A / 部門主管</td>
           </tr>
         </tbody>
       </table>
     </div>
+    <div class="note note-teal" style="margin-top:16px;">
+      <span class="note-icon">📌</span>
+      <div>課程總時數約 <strong>28 小時</strong>，建議分散於到職後 <strong>6 個月內</strong>完成，每月安排 1～2 堂，避免與新人實際業務上手期產生衝突。</div>
+    </div>
   </section>
 
-  <!-- ── Section 5: Gantt ── -->
+  <!-- ══ 5. INSTRUCTOR ══ -->
+  <section class="section fade-in" id="instructor">
+    <div class="section-title">
+      <div class="icon" style="background:var(--teal-lt);color:var(--teal)">👨‍🏫</div>
+      五、內部講師安排
+    </div>
+    <div class="note note-yellow">
+      <span class="note-icon">💡</span>
+      <div>本計畫<strong>不額外規劃講師培訓課程</strong>，資深工程師直接依其專業領域負責對應模組備課與授課。部門主管於課程前確認教材符合標準，課程後透過 <strong>Bravo Point</strong> 給予正式獎勵。</div>
+    </div>
+    <div class="instructor-grid">
+
+      <div class="instr-card">
+        <div class="instr-header" style="background:linear-gradient(135deg,#1e6fd9,#3b82f6);">
+          <div class="instr-avatar">👨‍🔬</div>
+          <h3>資深工程師 A</h3>
+          <p>良率基礎 · 失效模式 · SOP 流程專家</p>
+        </div>
+        <div class="instr-body">
+          <div class="instr-row">
+            <span class="instr-label">負責模組</span>
+            <span>
+              <span class="module-badge" style="background:#dbeafe;color:#1e40af">M1</span>
+              <span class="module-badge" style="background:#ede9fe;color:#6d28d9;margin-left:4px">M3</span>
+              <span class="module-badge" style="background:#fee2e2;color:#dc2626;margin-left:4px">M6</span>
+            </span>
+          </div>
+          <div class="instr-row">
+            <span class="instr-label">備課內容</span>
+            <span>整合各課良率基礎教材、彙整真實 FMEA 案例、更新部門 SOP 文件</span>
+          </div>
+          <div class="instr-row">
+            <span class="instr-label">排課建議</span>
+            <span>M1 → 到職第 1 個月 · M3 → 第 3 個月 · M6 → 第 5 個月</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="instr-card">
+        <div class="instr-header" style="background:linear-gradient(135deg,#0d9488,#14b8a6);">
+          <div class="instr-avatar">👩‍🔬</div>
+          <h3>資深工程師 B</h3>
+          <p>製程能力 · 根因分析專家</p>
+        </div>
+        <div class="instr-body">
+          <div class="instr-row">
+            <span class="instr-label">負責模組</span>
+            <span>
+              <span class="module-badge" style="background:#ccfbf1;color:#0f766e">M2</span>
+              <span class="module-badge" style="background:#dcfce7;color:#15803d;margin-left:4px">M5</span>
+            </span>
+          </div>
+          <div class="instr-row">
+            <span class="instr-label">備課內容</span>
+            <span>統整各課 Cpk 計算方式差異、彙整 8D 真實根因分析案例</span>
+          </div>
+          <div class="instr-row">
+            <span class="instr-label">排課建議</span>
+            <span>M2 → 到職第 2 個月 · M5 → 第 4 個月</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="instr-card">
+        <div class="instr-header" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);">
+          <div class="instr-avatar">👨‍💻</div>
+          <h3>資深工程師 C</h3>
+          <p>資料分析 · 工具應用專家</p>
+        </div>
+        <div class="instr-body">
+          <div class="instr-row">
+            <span class="instr-label">負責模組</span>
+            <span>
+              <span class="module-badge" style="background:#ffedd5;color:#c2410c">M4</span>
+            </span>
+          </div>
+          <div class="instr-row">
+            <span class="instr-label">備課內容</span>
+            <span>準備 JMP / Python 操作教材，提供部門實際資料集供新人練習</span>
+          </div>
+          <div class="instr-row">
+            <span class="instr-label">排課建議</span>
+            <span>M4 → 到職第 3 個月（分上下半場，各 4 hr）</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ 6. BRAVO POINT ══ -->
+  <section class="section fade-in" id="bravo">
+    <div class="section-title">
+      <div class="icon" style="background:var(--micron-lt);color:var(--micron)">⭐</div>
+      六、講師獎勵機制 — Micron Bravo Point
+    </div>
+    <div class="bravo-box">
+      <h3>⭐ Bravo Point 講師獎勵方案</h3>
+      <p>
+        為感謝資深工程師在本職工作之外貢獻時間與知識，部門主管將透過 <strong>Micron Bravo Point</strong> 機制，正式認可每位授課講師的付出，彰顯知識傳承對部門的重要價值。
+      </p>
+      <div class="bravo-cards">
+        <div class="bravo-card">
+          <div class="bp-icon">📝</div>
+          <div class="bp-label">教材製作貢獻</div>
+          <div class="bp-value">完成 1 套標準化教材<br>→ 由主管頒發 Bravo Point</div>
+        </div>
+        <div class="bravo-card">
+          <div class="bp-icon">🎤</div>
+          <div class="bp-label">課程授課貢獻</div>
+          <div class="bp-value">完成 1 場授課<br>→ 由主管頒發 Bravo Point</div>
+        </div>
+        <div class="bravo-card">
+          <div class="bp-icon">🏆</div>
+          <div class="bp-label">年度優秀講師</div>
+          <div class="bp-value">滿意度最高講師<br>→ 額外 Bravo Point 獎勵</div>
+        </div>
+        <div class="bravo-card">
+          <div class="bp-icon">🔄</div>
+          <div class="bp-label">教材持續更新</div>
+          <div class="bp-value">每次版本更新維護<br>→ 由主管酌情頒發</div>
+        </div>
+      </div>
+      <div class="bravo-note">
+        💡 <strong>執行方式：</strong>每場課程結束後，由部門主管於 Micron 內部系統送出 Bravo Point，以即時正面回饋肯定講師貢獻。年度結束時，訓練負責人彙整各講師貢獻清單，供主管作為績效參考。
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 7. GANTT ══ -->
   <section class="section fade-in" id="gantt">
     <div class="section-title">
       <div class="icon" style="background:var(--orange-lt);color:var(--orange)">📅</div>
-      五、甘特圖時程規劃（Gantt Chart）
+      七、甘特圖時程規劃（以到職起算 6 個月）
     </div>
     <div class="gantt-wrap">
       <table class="gantt-table">
         <thead>
           <tr>
-            <th class="task-name" style="text-align:left">任務項目</th>
-            <th class="month-hdr">M1</th>
-            <th class="month-hdr">M2</th>
-            <th class="month-hdr">M3</th>
-            <th class="month-hdr">M4</th>
-            <th class="month-hdr">M5</th>
-            <th class="month-hdr">M6</th>
+            <th class="task-name" style="text-align:left">任務 / 課程</th>
+            <th class="month-hdr">Month 1</th>
+            <th class="month-hdr">Month 2</th>
+            <th class="month-hdr">Month 3</th>
+            <th class="month-hdr">Month 4</th>
+            <th class="month-hdr">Month 5</th>
+            <th class="month-hdr">Month 6</th>
           </tr>
         </thead>
         <tbody>
+
           <!-- Phase 1 -->
           <tr class="phase-row-hdr">
-            <td colspan="7">🚀 Phase 1：啟動 & 規劃</td>
+            <td colspan="7">🚀 Phase 1：啟動 & 規劃（一次性，每期開班前執行）</td>
           </tr>
           <tr>
-            <td class="sub-task">1.1 訓練需求調查 (TNA)</td>
-            <td><span class="gantt-bar g-blue" style="width:90%"></span></td>
+            <td class="sub-task">1.1 新人需求訪談</td>
+            <td><span class="gantt-bar g-blue" style="width:80%"></span></td>
             <td></td><td></td><td></td><td></td><td></td>
           </tr>
           <tr>
-            <td class="sub-task">1.2 OKR 設定 & 里程碑</td>
+            <td class="sub-task">1.2 OKR 設定與主管核准</td>
             <td><span class="gantt-bar g-blue" style="width:60%;margin-left:40%"></span></td>
             <td></td><td></td><td></td><td></td><td></td>
           </tr>
           <tr>
-            <td class="sub-task">1.3 專案小組組建</td>
-            <td><span class="gantt-bar g-blue" style="width:80%;margin-left:20%"></span></td>
+            <td class="sub-task">1.3 講師指派 & Bravo Point 說明</td>
+            <td><span class="gantt-bar g-blue" style="width:50%;margin-left:50%"></span></td>
             <td></td><td></td><td></td><td></td><td></td>
           </tr>
           <tr>
-            <td class="sub-task">1.4 預算規劃</td>
+            <td class="sub-task">1.4 年度課程排程確認</td>
             <td></td>
             <td><span class="gantt-bar g-blue" style="width:50%"></span></td>
             <td></td><td></td><td></td><td></td>
@@ -834,60 +990,93 @@
 
           <!-- Phase 2 -->
           <tr class="phase-row-hdr">
-            <td colspan="7">📚 Phase 2：教材整備</td>
+            <td colspan="7">📚 Phase 2：教材標準化（核心工作，課程前完成）</td>
           </tr>
           <tr>
-            <td class="sub-task">2.1 教材盤點 & 分類</td>
-            <td></td>
+            <td class="sub-task">2.1 各課現有教材盤點 & 差異分析</td>
             <td><span class="gantt-bar g-teal" style="width:100%"></span></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td class="sub-task">2.2 建立統一教材模板</td>
+            <td><span class="gantt-bar g-teal" style="width:50%;margin-left:50%"></span></td>
+            <td><span class="gantt-bar g-teal" style="width:30%"></span></td>
             <td></td><td></td><td></td><td></td>
           </tr>
           <tr>
-            <td class="sub-task">2.2 教材數位化 & 知識庫</td>
+            <td class="sub-task">2.3 各模組教材製作 & 補充</td>
             <td></td>
-            <td><span class="gantt-bar g-teal" style="width:60%;margin-left:40%"></span></td>
-            <td><span class="gantt-bar g-teal" style="width:60%"></span></td>
+            <td><span class="gantt-bar g-teal" style="width:70%;margin-left:30%"></span></td>
+            <td><span class="gantt-bar g-teal" style="width:50%"></span></td>
             <td></td><td></td><td></td>
           </tr>
           <tr>
-            <td class="sub-task">2.3 講師培訓 (T-T-T)</td>
+            <td class="sub-task">2.4 同儕互審 & 主管 Final Review</td>
             <td></td><td></td>
-            <td><span class="gantt-bar g-teal" style="width:80%"></span></td>
+            <td><span class="gantt-bar g-teal" style="width:60%;margin-left:30%"></span></td>
             <td></td><td></td><td></td>
           </tr>
           <tr class="milestone-row">
-            <td class="sub-task">⭐ 里程碑：課程計畫核准</td>
+            <td class="sub-task">⭐ 里程碑：教材全數通過審核</td>
             <td></td><td></td>
-            <td style="text-align:center"><span class="milestone-star">⭐</span></td>
+            <td style="text-align:center">⭐</td>
             <td></td><td></td><td></td>
           </tr>
 
           <!-- Phase 3 -->
           <tr class="phase-row-hdr">
-            <td colspan="7">🎓 Phase 3：課程執行</td>
+            <td colspan="7">🎓 Phase 3：課程執行（M1 → M6 循序開課）</td>
           </tr>
           <tr>
-            <td class="sub-task">M1 / M2 基礎課程</td>
+            <td class="sub-task">M1 良率基礎概念 & 統計方法（資深工程師 A）</td>
+            <td></td>
+            <td><span class="gantt-bar g-purple" style="width:55%"></span></td>
+            <td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td class="sub-task">M2 製程能力分析 Cpk/Ppk（資深工程師 B）</td>
+            <td></td>
+            <td><span class="gantt-bar g-purple" style="width:55%;margin-left:45%"></span></td>
+            <td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td class="sub-task">M3 良率失效模式 FMEA/FDC（資深工程師 A）</td>
+            <td></td><td></td>
+            <td><span class="gantt-bar g-purple" style="width:55%"></span></td>
             <td></td><td></td><td></td>
-            <td><span class="gantt-bar g-purple" style="width:100%"></span></td>
+          </tr>
+          <tr>
+            <td class="sub-task">M4 資料分析工具 JMP/Python（資深工程師 C）</td>
+            <td></td><td></td>
+            <td><span class="gantt-bar g-purple" style="width:55%;margin-left:45%"></span></td>
+            <td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td class="sub-task">M5 根因分析 8D/Fishbone（資深工程師 B）</td>
+            <td></td><td></td><td></td>
+            <td><span class="gantt-bar g-purple" style="width:55%"></span></td>
             <td></td><td></td>
           </tr>
           <tr>
-            <td class="sub-task">M3 / M4 進階課程</td>
+            <td class="sub-task">M6 部門 SOP & 工作流程實務（資深工程師 A）</td>
             <td></td><td></td><td></td><td></td>
-            <td><span class="gantt-bar g-purple" style="width:100%"></span></td>
+            <td><span class="gantt-bar g-purple" style="width:55%"></span></td>
             <td></td>
           </tr>
           <tr>
-            <td class="sub-task">M5 / M6 專案導向課程</td>
-            <td></td><td></td><td></td><td></td>
-            <td><span class="gantt-bar g-purple" style="width:60%;margin-left:40%"></span></td>
-            <td><span class="gantt-bar g-purple" style="width:40%"></span></td>
+            <td class="sub-task">各課結訓測驗</td>
+            <td></td>
+            <td><span class="gantt-bar g-purple" style="width:100%"></span></td>
+            <td><span class="gantt-bar g-purple" style="width:100%"></span></td>
+            <td><span class="gantt-bar g-purple" style="width:100%"></span></td>
+            <td><span class="gantt-bar g-purple" style="width:55%"></span></td>
+            <td></td>
           </tr>
           <tr class="milestone-row">
-            <td class="sub-task">⭐ 里程碑：第一期訓練完成</td>
-            <td></td><td></td><td></td><td></td><td></td>
-            <td style="text-align:center"><span class="milestone-star">⭐</span></td>
+            <td class="sub-task">⭐ 里程碑：全部課程授課完成</td>
+            <td></td><td></td><td></td><td></td>
+            <td style="text-align:center">⭐</td>
+            <td></td>
           </tr>
 
           <!-- Phase 4 -->
@@ -895,114 +1084,161 @@
             <td colspan="7">📊 Phase 4：評估 & 優化</td>
           </tr>
           <tr>
-            <td class="sub-task">4.1 滿意度 & 測驗分析</td>
-            <td></td><td></td><td></td><td></td>
-            <td><span class="gantt-bar g-orange" style="width:40%;margin-left:60%"></span></td>
-            <td><span class="gantt-bar g-orange" style="width:30%"></span></td>
+            <td class="sub-task">各場次滿意度問卷回收</td>
+            <td></td>
+            <td><span class="gantt-bar g-orange" style="width:100%"></span></td>
+            <td><span class="gantt-bar g-orange" style="width:100%"></span></td>
+            <td><span class="gantt-bar g-orange" style="width:100%"></span></td>
+            <td><span class="gantt-bar g-orange" style="width:55%"></span></td>
+            <td></td>
           </tr>
           <tr>
-            <td class="sub-task">4.2 OKR 達成檢核</td>
+            <td class="sub-task">結訓測驗成績彙整分析</td>
             <td></td><td></td><td></td><td></td><td></td>
             <td><span class="gantt-bar g-orange" style="width:60%"></span></td>
           </tr>
           <tr>
-            <td class="sub-task">4.3 成效報告 & 下期規劃</td>
+            <td class="sub-task">OKR 達成率檢核 & 訓練報告</td>
             <td></td><td></td><td></td><td></td><td></td>
             <td><span class="gantt-bar g-orange" style="width:50%;margin-left:50%"></span></td>
           </tr>
           <tr class="milestone-row">
-            <td class="sub-task">⭐ 里程碑：年度訓練總結報告</td>
+            <td class="sub-task">⭐ 里程碑：年度訓練總結報告提交</td>
             <td></td><td></td><td></td><td></td><td></td>
-            <td style="text-align:center"><span class="milestone-star">⭐</span></td>
+            <td style="text-align:center">⭐</td>
           </tr>
+
         </tbody>
       </table>
     </div>
   </section>
 
-  <!-- ── Section 6: RACI ── -->
+  <!-- ══ 8. RACI ══ -->
   <section class="section fade-in" id="raci">
     <div class="section-title">
       <div class="icon" style="background:var(--green-lt);color:var(--green)">👥</div>
-      六、RACI 責任矩陣
+      八、RACI 責任矩陣
     </div>
     <div class="raci-wrap">
       <table class="raci-table">
         <thead>
           <tr>
-            <th style="min-width:180px">工作項目</th>
+            <th style="min-width:210px">工作項目</th>
             <th>部門主管</th>
-            <th>專案 PM</th>
-            <th>資深工程師<br>(講師)</th>
-            <th>行政支援</th>
-            <th>HR</th>
+            <th>訓練專案<br>負責人</th>
+            <th>資深工程師<br>（講師）</th>
+            <th>新進<br>工程師</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>OKR 設定審核</td>
+            <td>新人需求訪談 & 規劃</td>
+            <td><span class="raci-a">A</span></td>
+            <td><span class="raci-r">R</span></td>
+            <td><span class="raci-c">C</span></td>
+            <td><span class="raci-i">I</span></td>
+          </tr>
+          <tr>
+            <td>OKR 設定與核准</td>
             <td><span class="raci-a">A</span></td>
             <td><span class="raci-r">R</span></td>
             <td><span class="raci-c">C</span></td>
             <td><span class="raci-dash">—</span></td>
-            <td><span class="raci-i">I</span></td>
           </tr>
           <tr>
-            <td>教材整理 & 知識庫</td>
-            <td><span class="raci-i">I</span></td>
+            <td>講師指派與分工</td>
             <td><span class="raci-a">A</span></td>
             <td><span class="raci-r">R</span></td>
-            <td><span class="raci-c">C</span></td>
             <td><span class="raci-i">I</span></td>
+            <td><span class="raci-dash">—</span></td>
           </tr>
           <tr>
-            <td>講師培訓 (T-T-T)</td>
+            <td>各課現有教材盤點</td>
+            <td><span class="raci-i">I</span></td>
             <td><span class="raci-a">A</span></td>
-            <td><span class="raci-r">R</span></td>
             <td><span class="raci-r">R</span></td>
             <td><span class="raci-dash">—</span></td>
-            <td><span class="raci-c">C</span></td>
           </tr>
           <tr>
-            <td>課程安排 & 通知</td>
+            <td>建立統一教材模板</td>
+            <td><span class="raci-a">A</span></td>
+            <td><span class="raci-r">R</span></td>
+            <td><span class="raci-c">C</span></td>
+            <td><span class="raci-dash">—</span></td>
+          </tr>
+          <tr>
+            <td>教材製作 & 補充</td>
             <td><span class="raci-i">I</span></td>
             <td><span class="raci-a">A</span></td>
+            <td><span class="raci-r">R</span></td>
+            <td><span class="raci-dash">—</span></td>
+          </tr>
+          <tr>
+            <td>教材審核（主管 Final Review）</td>
+            <td><span class="raci-a">A</span></td>
+            <td><span class="raci-r">R</span></td>
             <td><span class="raci-c">C</span></td>
+            <td><span class="raci-dash">—</span></td>
+          </tr>
+          <tr>
+            <td>課程排程 & 開課通知</td>
+            <td><span class="raci-i">I</span></td>
             <td><span class="raci-r">R</span></td>
-            <td><span class="raci-r">R</span></td>
+            <td><span class="raci-i">I</span></td>
+            <td><span class="raci-i">I</span></td>
           </tr>
           <tr>
             <td>課程授課</td>
             <td><span class="raci-i">I</span></td>
             <td><span class="raci-i">I</span></td>
             <td><span class="raci-r">R</span></td>
-            <td><span class="raci-c">C</span></td>
             <td><span class="raci-dash">—</span></td>
           </tr>
           <tr>
-            <td>成效評估 & 報告</td>
+            <td>出席 & 參與結訓測驗</td>
+            <td><span class="raci-i">I</span></td>
+            <td><span class="raci-a">A</span></td>
+            <td><span class="raci-dash">—</span></td>
+            <td><span class="raci-r">R</span></td>
+          </tr>
+          <tr>
+            <td>Bravo Point 頒發</td>
+            <td><span class="raci-r">R</span></td>
+            <td><span class="raci-c">C</span></td>
+            <td><span class="raci-i">I</span></td>
+            <td><span class="raci-dash">—</span></td>
+          </tr>
+          <tr>
+            <td>成效評估 & OKR 檢核報告</td>
             <td><span class="raci-a">A</span></td>
             <td><span class="raci-r">R</span></td>
             <td><span class="raci-c">C</span></td>
-            <td><span class="raci-dash">—</span></td>
+            <td><span class="raci-i">I</span></td>
+          </tr>
+          <tr>
+            <td>教材更新維護</td>
+            <td><span class="raci-i">I</span></td>
+            <td><span class="raci-a">A</span></td>
             <td><span class="raci-r">R</span></td>
+            <td><span class="raci-dash">—</span></td>
           </tr>
         </tbody>
       </table>
       <div class="raci-legend">
         <span><span class="raci-r">R</span> 負責執行</span>
-        <span><span class="raci-a">A</span> 最終負責</span>
-        <span><span class="raci-c">C</span> 諮詢</span>
-        <span><span class="raci-i">I</span> 告知</span>
+        <span><span class="raci-a">A</span> 最終負責 / 審核</span>
+        <span><span class="raci-c">C</span> 諮詢 / 提供意見</span>
+        <span><span class="raci-i">I</span> 告知 / 知悉</span>
+        <span style="color:#9ca3af">— 不涉及</span>
       </div>
     </div>
   </section>
 
-  <!-- ── Section 7: Risk ── -->
+  <!-- ══ 9. RISK ══ -->
   <section class="section fade-in" id="risk">
     <div class="section-title">
       <div class="icon" style="background:var(--red-lt);color:var(--red)">⚠️</div>
-      七、風險管理
+      九、風險管理
     </div>
     <div class="risk-wrap">
       <table class="risk-table">
@@ -1016,175 +1252,135 @@
         </thead>
         <tbody>
           <tr>
-            <td><strong>講師工作繁忙無法授課</strong></td>
+            <td><strong>各課教材差異過大，標準化耗時超出預期</strong></td>
+            <td><span class="risk-pill risk-high">高</span></td>
+            <td><span class="risk-pill risk-medium">中</span></td>
+            <td>Phase 2 預留充足時間；以「最小可行教材」為初版目標，逐步完善</td>
+          </tr>
+          <tr>
+            <td><strong>資深工程師因業務繁忙，備課或授課時間不足</strong></td>
             <td><span class="risk-pill risk-medium">中</span></td>
             <td><span class="risk-pill risk-high">高</span></td>
-            <td>提前安排備用講師；固定授課時段保護；錄影備援</td>
+            <td>排課避開業務衝刺期；主管確保備課時間受保護；以 Bravo Point 強化動機</td>
           </tr>
           <tr>
-            <td><strong>教材品質參差不齊</strong></td>
+            <td><strong>新進工程師業務上手壓力大，訓練出席率低</strong></td>
             <td><span class="risk-pill risk-medium">中</span></td>
             <td><span class="risk-pill risk-medium">中</span></td>
-            <td>設立教材審查委員會，統一格式與標準模板</td>
+            <td>課程分散 6 個月、每月 1～2 堂；課程錄影供補課；排程納入 Onboarding 計畫</td>
           </tr>
           <tr>
-            <td><strong>學員出席率偏低</strong></td>
+            <td><strong>課程內容與各課實際工作方式不完全一致</strong></td>
             <td><span class="risk-pill risk-medium">中</span></td>
-            <td><span class="risk-pill risk-high">高</span></td>
-            <td>納入年度 KPI 考核；安排錄影供補課；彈性時段</td>
+            <td><span class="risk-pill risk-medium">中</span></td>
+            <td>以通用基礎為主軸，差異部分由各課 Buddy 或 OJT 補充說明</td>
           </tr>
           <tr>
-            <td><strong>知識庫平台技術問題</strong></td>
+            <td><strong>核心講師離職導致知識傳承中斷</strong></td>
             <td><span class="risk-pill risk-low">低</span></td>
-            <td><span class="risk-pill risk-medium">中</span></td>
-            <td>準備備援存取方案（本地備份 + 雲端雙備援）</td>
-          </tr>
-          <tr>
-            <td><strong>課程內容與實際工作脫節</strong></td>
-            <td><span class="risk-pill risk-low">低</span></td>
             <td><span class="risk-pill risk-high">高</span></td>
-            <td>課程設計加入實際案例，邀請資深工程師共同審查</td>
+            <td>教材完整文件化歸檔；每模組培養備用講師；教材版本由多人共同維護</td>
           </tr>
         </tbody>
       </table>
     </div>
   </section>
 
-  <!-- ── Section 8: Milestone ── -->
+  <!-- ══ 10. MILESTONE ══ -->
   <section class="section fade-in" id="milestone">
     <div class="section-title">
       <div class="icon" style="background:var(--orange-lt);color:var(--orange)">⭐</div>
-      八、關鍵里程碑總覽
+      十、關鍵里程碑總覽
     </div>
     <div class="milestone-timeline">
 
       <div class="ms-item">
         <div class="ms-dot" style="background:var(--blue)">1</div>
         <div class="ms-content">
-          <h4>訓練需求調查完成 & OKR 核准</h4>
-          <p>完成 TNA 調查報告，OKR 經部門主管核准，專案正式啟動</p>
+          <h4>專案啟動 & OKR 核准</h4>
+          <p>完成新人需求訪談、確認訓練主題優先序，OKR 經部門主管核准，講師指派完成</p>
         </div>
-        <div class="ms-time" style="background:var(--blue-lt);color:var(--blue)">第 1 個月末</div>
+        <div class="ms-time" style="background:var(--blue-lt);color:var(--blue)">Month 1 末</div>
       </div>
 
       <div class="ms-item">
-        <div class="ms-dot" style="background:var(--teal)">2</div>
+        <div class="ms-dot" style="background:#0891b2">2</div>
         <div class="ms-content">
-          <h4>所有教材整理完成 & 知識庫上線</h4>
-          <p>部門全部教材完成數位化，知識庫平台正式對外開放</p>
+          <h4>統一教材模板建立完成</h4>
+          <p>教材格式規範、章節架構、深度標準確立，作為各模組製作依據</p>
         </div>
-        <div class="ms-time" style="background:var(--teal-lt);color:var(--teal)">第 2 個月末</div>
+        <div class="ms-time" style="background:#cffafe;color:#0e7490">Month 2 初</div>
       </div>
 
       <div class="ms-item">
-        <div class="ms-dot" style="background:var(--purple)">3</div>
+        <div class="ms-dot" style="background:var(--teal)">3</div>
         <div class="ms-content">
-          <h4>⭐ 講師認證完成 & 課程計畫核准</h4>
-          <p>所有內部講師通過認證，完整課程計畫獲得核准，準備開課</p>
+          <h4>⭐ 全部教材審核通過</h4>
+          <p>6 套標準化課程教材完成同儕互審與主管 Final Review，版本鎖定歸檔，準備開課</p>
         </div>
-        <div class="ms-time" style="background:var(--purple-lt);color:var(--purple)">第 2.5 個月</div>
+        <div class="ms-time" style="background:var(--teal-lt);color:var(--teal)">Month 3 末</div>
       </div>
 
       <div class="ms-item">
-        <div class="ms-dot" style="background:var(--orange)">4</div>
+        <div class="ms-dot" style="background:var(--purple)">4</div>
         <div class="ms-content">
-          <h4>⭐ 第一期課程全部完成</h4>
-          <p>M1~M6 全部課程授課完畢，學員完成結訓測驗，成績統計完成</p>
+          <h4>前半段課程完成（M1 ~ M3）</h4>
+          <p>基礎模組授課完成，第一波學員滿意度回饋收集，Bravo Point 首次頒發</p>
         </div>
-        <div class="ms-time" style="background:var(--orange-lt);color:var(--orange)">第 5 個月末</div>
+        <div class="ms-time" style="background:var(--purple-lt);color:var(--purple)">Month 3 末</div>
       </div>
 
       <div class="ms-item">
-        <div class="ms-dot" style="background:var(--green)">5</div>
+        <div class="ms-dot" style="background:var(--orange)">5</div>
         <div class="ms-content">
-          <h4>成效評估報告提交</h4>
-          <p>Kirkpatrick 四層評估完成，成效報告提交給部門主管與 HR</p>
+          <h4>⭐ 全部課程授課完成（M1 ~ M6）</h4>
+          <p>6 大模組全數授課完畢，結訓測驗完成，出席率與測驗成績統計，Bravo Point 年度頒發</p>
         </div>
-        <div class="ms-time" style="background:var(--green-lt);color:var(--green)">第 6 個月初</div>
+        <div class="ms-time" style="background:var(--orange-lt);color:var(--orange)">Month 5 末</div>
       </div>
 
       <div class="ms-item">
-        <div class="ms-dot" style="background:#a21caf">6</div>
+        <div class="ms-dot" style="background:var(--green)">6</div>
         <div class="ms-content">
-          <h4>⭐ 年度訓練總結 & 下期規劃完成</h4>
-          <p>OKR 達成率總結，下一期訓練計畫草案完成，知識庫更新完畢</p>
+          <h4>⭐ 年度訓練總結報告提交</h4>
+          <p>OKR 達成率檢核、Kirkpatrick 評估完成、教材版本更新、下期班次規劃啟動，報告提交部門主管</p>
         </div>
-        <div class="ms-time" style="background:#fae8ff;color:#a21caf">第 6 個月末</div>
+        <div class="ms-time" style="background:var(--green-lt);color:var(--green)">Month 6 末</div>
       </div>
 
     </div>
   </section>
 
-  <!-- ── Section 9: Tools ── -->
-  <section class="section fade-in" id="tools">
-    <div class="section-title">
-      <div class="icon" style="background:var(--gray-lt);color:var(--gray)">🛠️</div>
-      九、推薦工具
-    </div>
-    <div class="tools-grid">
-      <a class="tool-card" href="https://asana.com" target="_blank" rel="noopener">
-        <div class="tool-icon" style="background:#f3e8ff">🗂️</div>
-        <div class="tool-info"><h4>Asana</h4><p>專案管理 & 甘特圖</p></div>
-      </a>
-      <a class="tool-card" href="https://monday.com" target="_blank" rel="noopener">
-        <div class="tool-icon" style="background:#dbeafe">📋</div>
-        <div class="tool-info"><h4>Monday.com</h4><p>專案管理 & 協作</p></div>
-      </a>
-      <a class="tool-card" href="https://tability.io" target="_blank" rel="noopener">
-        <div class="tool-icon" style="background:#dcfce7">🎯</div>
-        <div class="tool-info"><h4>Tability</h4><p>OKR 追蹤平台</p></div>
-      </a>
-      <a class="tool-card" href="https://www.microsoft.com/microsoft-365/sharepoint/collaboration" target="_blank" rel="noopener">
-        <div class="tool-icon" style="background:#dbeafe">📁</div>
-        <div class="tool-info"><h4>SharePoint</h4><p>知識庫 & 教材管理</p></div>
-      </a>
-      <a class="tool-card" href="https://www.microsoft.com/microsoft-teams/group-chat-software" target="_blank" rel="noopener">
-        <div class="tool-icon" style="background:#ede9fe">💻</div>
-        <div class="tool-info"><h4>MS Teams</h4><p>線上課程平台</p></div>
-      </a>
-      <a class="tool-card" href="https://www.microsoft.com/microsoft-365/excel" target="_blank" rel="noopener">
-        <div class="tool-icon" style="background:#dcfce7">📊</div>
-        <div class="tool-info"><h4>Excel / Sheets</h4><p>OKR 追蹤表格</p></div>
-      </a>
-      <a class="tool-card" href="https://forms.microsoft.com" target="_blank" rel="noopener">
-        <div class="tool-icon" style="background:#ffedd5">📝</div>
-        <div class="tool-info"><h4>Microsoft Forms</h4><p>問卷調查 & 測驗</p></div>
-      </a>
-      <a class="tool-card" href="https://miro.com" target="_blank" rel="noopener">
-        <div class="tool-icon" style="background:#fef9c3">🖌️</div>
-        <div class="tool-info"><h4>Miro</h4><p>白板 & 協作設計</p></div>
-      </a>
-    </div>
-  </section>
+</div>
 
-</div><!-- /container -->
-
-<!-- Footer -->
+<!-- FOOTER -->
 <footer class="footer">
-  <p>🏭 良率分析部門訓練專案規劃 · 2026 年度</p>
-  <p style="margin-top:6px">框架參考：OKR · WBS · Gantt Chart · Kirkpatrick Model · RACI Matrix</p>
+  <p>🏭 良率分析部門 · 新進工程師內部訓練專案 · 2026 年度</p>
+  <p style="margin-top:6px">框架：OKR · WBS · Gantt Chart · Kirkpatrick Model · RACI Matrix &nbsp;|&nbsp; 講師獎勵：Micron Bravo Point ⭐</p>
 </footer>
 
 <script>
-  // Scroll fade-in
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        observer.unobserve(e.target);
-      }
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
     });
-  }, { threshold: 0.08 });
+  }, { threshold: 0.07 });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-  // Smooth scroll for nav links
   document.querySelectorAll('.sticky-nav a').forEach(a => {
     a.addEventListener('click', e => {
       e.preventDefault();
-      const target = document.querySelector(a.getAttribute('href'));
-      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
 </script>
 </body>
 </html>
+
+							<script>
+                            	
+							</script>
+                        </body>
+                        </html>
+                    
